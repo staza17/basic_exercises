@@ -155,12 +155,14 @@ if __name__ == "__main__":
             count = 0
             id = message['id']
             search_id = id
-            while True:
+            len_dict = 0
+            while len_dict < len(info):
+                len_dict += 1
                 for item in info:
                     if search_id == item['reply_for']:
                         count += 1
                         search_id = item['id']
-                break
+                        len_dict = 0
             messages_id[id] = count
         return count_largest(messages_id)
 
